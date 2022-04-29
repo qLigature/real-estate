@@ -17,6 +17,16 @@ let propertyData = new mongoose.Schema({
 		required: [true, "Property Type is required"]
 		/*Hotel/Condominium/TownHouse/Tower*/
 	},
+	/*
+	propertyDetails:
+	{
+		type: String
+	}
+
+	To make it simpler, all details may be included in a single string
+
+
+	*/
 	propertyDetails:[
 	{
 		lotArea:{
@@ -40,6 +50,15 @@ let propertyData = new mongoose.Schema({
 		}
 	}
 	],
+	/*
+	features:
+	{
+		type: String
+	}
+
+	To make it simpler, all features may be included in a single string
+
+	*/
 	features:[
 	{
 		bedroom:{
@@ -63,7 +82,33 @@ let propertyData = new mongoose.Schema({
 			//type: Number
 		}
 	}
-	]
+	],
+	available:
+	{
+		type: String,
+		required: [true, "Slot availability is required"]
+		/*
+	Default is "1" for townhouse-type since each model has one establishment
+	Number of available units available for condominium-type
+	Number of available rooms available for hotel-type
+	Number of available leasing units for tower-type
+		*/
+	},
+	isActive:
+	{
+		type: Boolean
+		//Status of unit for sale to public
+	},
+	modified:
+	{
+		type: String
+		//Displays when was the property info has been updated
+	},
+	remarks:
+	{
+		type: String
+
+	}
 
 
 
