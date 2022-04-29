@@ -21,9 +21,9 @@ module.exports.checkEmailExists = ( req, res) => {
 
 module.exports.registerUser = (req, res) => {
 
-	console.log(req.body);
+	//console.log(req.body);
 
-	const newPswd = bcrypt.hashSync(req.body.password, 5)
+	const newPswd = bcrypt.hashSync(req.body.password, 10)
 
 	let newUser = new User({
 	
@@ -44,3 +44,24 @@ module.exports.registerUser = (req, res) => {
 	
 
 };
+
+module.exports.loginUser = (req, res) => {
+	User.findOne({email: req.body.email})
+	.then(foundUser => {
+		if(foundUser === null){
+			return res.send("User does not exist")
+		}else {
+			const isPasswordCorrect = bcrypt.compareSync(req.body.password, foundUser.password)
+
+			if(isPasswordCorrect){
+				
+				return res.send({accessToken: auth.createAccessToken(foundUser)})
+			}else {
+				return res.send("Password is incorrect")
+			}
+		}
+	})
+	.catch(error => res.send(error))
+
+
+}
