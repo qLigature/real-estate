@@ -5,6 +5,8 @@ require('dotenv').config();
 
 const users = require('./routes/users')
 
+const property = require('./routes/properties')
+
 const { ACCESS_TOKEN_SECRET, DB_CONNECTION } = process.env;
 
 const app = express();
@@ -30,6 +32,7 @@ app.options('*', cors());
 
 //Path? Mount Path?
 app.use('/users', users);
+app.use('/property', property)
 
 app.get('/', (req, res) => {
   res.send('Hello World!');
