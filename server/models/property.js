@@ -27,7 +27,7 @@ let propertyData = new mongoose.Schema({
 
 
 	*/
-	propertyDetails:[
+	propertyDetails:
 	{
 		lotArea:{
 			type: String,
@@ -48,8 +48,7 @@ let propertyData = new mongoose.Schema({
 			Year and Payment  Plan
 			*/
 		}
-	}
-	],
+	},
 	/*
 	features:
 	{
@@ -59,7 +58,7 @@ let propertyData = new mongoose.Schema({
 	To make it simpler, all features may be included in a single string
 
 	*/
-	features:[
+	features:
 	{
 		bedroom:{
 			type: String
@@ -81,8 +80,7 @@ let propertyData = new mongoose.Schema({
 			type: String
 			//type: Number
 		}
-	}
-	],
+	},
 	available:
 	{
 		type: String,
