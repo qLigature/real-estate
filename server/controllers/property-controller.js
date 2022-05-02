@@ -11,22 +11,20 @@ module.exports.createPrp = (req, res) => {
 	propertyName: req.body.propertyName,
 	propertyLoc: req.body.propertyLoc,
 	propertyType: req.body.propertyType,
-	propertyDetails: [
+	propertyDetails: 
 	{
-		lotArea: req.body.propertyDetails[0].lotArea,
-		storey: req.body.propertyDetails[0].storey,
-		price: req.body.propertyDetails[0].price
-	}
-	],
-	features: [
+		lotArea: req.body.propertyDetails.lotArea,
+		storey: req.body.propertyDetails.storey,
+		price: req.body.propertyDetails.price
+	},
+	features: 
 	{
-		bedroom: req.body.features[0].bedroom,
-		toiletbath: req.body.features[0].toiletbath,
-		livingroom: req.body.features[0].livingroom,
-		dining: req.body.features[0].dining,
-		garage: req.body.features[0].garage
-	}
-	],
+		bedroom: req.body.features.bedroom,
+		toiletbath: req.body.features.toiletbath,
+		livingroom: req.body.features.livingroom,
+		dining: req.body.features.dining,
+		garage: req.body.features.garage
+	},
 	available: req.body.available,
 	isActive: req.body.isActive,
 	remarks: req.body.remarks
@@ -55,13 +53,12 @@ module.exports.createLeasePrp = (req, res) => {
 	propertyName: req.body.propertyName,
 	propertyLoc: req.body.propertyLoc,
 	propertyType: req.body.propertyType,
-	propertyDetails: [
+	propertyDetails: 
 	{
-		lotArea: req.body.propertyDetails[0].lotArea,
-		storey: req.body.propertyDetails[0].storey,
-		price: req.body.propertyDetails[0].price
-	}
-	],
+		lotArea: req.body.propertyDetails.lotArea,
+		storey: req.body.propertyDetails.storey,
+		price: req.body.propertyDetails.price
+	},
 	available: req.body.available,
 	isActive: req.body.isActive,
 	remarks: req.body.remarks
@@ -106,7 +103,12 @@ module.exports.editPrp = (req, res) => {
 		garage: req.body.features[0].garage
 	}
 	],*/
-	propertyName: req.body.propertyName,
+	propertyDetails:
+	{
+		lotArea: req.body.propertyDetails.lotArea,
+		storey: req.body.propertyDetails.storey,
+		price: req.body.propertyDetails.price
+	},
 	available: req.body.available,
 	isActive: req.body.isActive,
 	modified: `${wk[nd.getDay()]} ${nd.getHours()-12}:${nd.getMinutes()} ${
@@ -114,6 +116,7 @@ module.exports.editPrp = (req, res) => {
 	}`,
 	remarks: req.body.remarks
 	}
+	
 
 	Property.findByIdAndUpdate(req.params.id, updates, {new:true})
 	.then(result => res.send(result))

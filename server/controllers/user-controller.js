@@ -47,15 +47,15 @@ module.exports.registerUser = (req, res) => {
 
 module.exports.loginUser = (req, res) => {
 	User.findOne({email: req.body.email})
-	.then(foundUser => {
-		if(foundUser === null){
+	.then(user => {
+		if(user === null){
 			return res.send("User does not exist")
 		}else {
-			const isPasswordCorrect = bcrypt.compareSync(req.body.password, foundUser.password)
+			const isPasswordCorrect = bcrypt.compareSync(req.body.password, user.password)
 
 			if(isPasswordCorrect){
 				
-				return res.send({accessToken: auth.createAccessToken(foundUser)})
+				return res.send({accessToken: auth.createToken(user)})
 			}else {
 				return res.send("Password is incorrect")
 			}
@@ -64,4 +64,19 @@ module.exports.loginUser = (req, res) => {
 	.catch(error => res.send(error))
 
 
+};
+
+
+module.exports.updToClient = (req, res) => {
+
+	User.find({_id: req.params.id})
+
+	let updates = {
+		isAdmin: false
+	}
+
+	User.findByIdAndUpdate(req.params.id, updates, {new:true})
+	.then(updatedUser => res.send(updatedUser))
+	.catch(error => res.send(error))
 }
+
