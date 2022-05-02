@@ -3,19 +3,17 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 require('dotenv').config();
 
-const users = require('./routes/users')
+const users = require('./routes/users');
 
-const property = require('./routes/properties')
+const property = require('./routes/properties');
+
+const acquisition = require('./routes/acquisitions');
 
 const { ACCESS_TOKEN_SECRET, DB_CONNECTION } = process.env;
 
 const app = express();
 
-mongoose.connect(process.env.DB_CONNECTION,
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-  });
+mongoose.connect(process.env.DB_CONNECTION, {useNewUrlParser: true,useUnifiedTopology: true});
 
 let db = mongoose.connection;
 
@@ -32,7 +30,8 @@ app.options('*', cors());
 
 //Path? Mount Path?
 app.use('/users', users);
-app.use('/property', property)
+app.use('/property', property);
+app.use('/acquisitions', acquisition);
 
 app.get('/', (req, res) => {
   res.send('Hello World!');
