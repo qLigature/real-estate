@@ -80,3 +80,33 @@ module.exports.updToClient = (req, res) => {
 	.catch(error => res.send(error))
 }
 
+module.exports.retrieveAllUsers = (req, res) => {
+	User.find({})
+	.then(users => res.send(users))
+	.catch(error => res.send(error))
+
+}
+
+module.exports.retrieveAllAdmin = (req, res) => {
+	User.find({isAdmin: true})
+	.then(users => res.send(users))
+	.catch(error => res.send(error))
+}
+
+module.exports.retrieveAllClients = (req, res) => {
+	User.find({isAdmin: false})
+	.then(users => res.send(users))
+	.catch(error => res.send(error))
+}
+
+module.exports.findUserById = (req, res) => {
+	User.find({_id: req.params.id})
+	.then(users => res.send(users))
+	.catch(error => res.send(error))
+}
+
+module.exports.userDetails = (req, res) => {
+	User.find({_id: req.user.id})
+	.then(user => res.send(user))
+	.catch(error => res.send(error))
+}
