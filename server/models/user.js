@@ -37,18 +37,16 @@ let userData = new mongoose.Schema({
 })
 
 /*
-1. All default users are Admin.
+1. All default users are not Admin.
 
-2. ONLY Admin can create new Users for clients, changing the isAdmin valuews to false. Credentials will be given via email, (and a change password, which might be included in the controller soon)
+2. Public can create new Users for clients, Only Admin can do changing the isAdmin values to false. 
 
-3. Clients qualified for Users Account creation are for clients of Property Acquisition/Leasing/ (Clients of hotel reservations/ halls reservations might also be included)
+3. Users Account creation are for clients of Property Acquisition/Leasing/ (Clients of hotel reservations/ halls reservations might also be included)
 
 4. Purpose of Client Account Creation:
--User Details
--User Transactions
--property/company updates (such as For Leasing: Operations hours, For Property/Condominium: Updates on significant events (maintenance, announcements, other events which may affect the residence))
-
-
+- User Details
+- User Transactions
+- property/company updates (such as For Leasing: Operations hours, For Property/Condominium: Updates on significant events (maintenance, announcements, other events which may affect the residence))
 */
 
 
