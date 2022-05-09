@@ -22,6 +22,11 @@ let acquisition = new mongoose.Schema({
 		required: [true, "Client Email is required."]
 		//client account email
 	},
+	acqPropertyId:
+	{
+		type: String,
+		required: [true, "Acquired Property Id is required."]
+	},
 	acqPropertyName:
 	{
 		type: String,
