@@ -1,0 +1,411 @@
+{
+	"info": {
+		"_postman_id": "d76e5d39-c48f-40db-8023-b732cad0d3d3",
+		"name": "real-estate project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Acquisitions",
+			"item": [
+				{
+					"name": "Create Acq Transaction By Prop ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNmY4OGYwNGQyOTA2MzA1ODcwYjRmYiIsImVtYWlsIjoiZWR3YXJkQGdtYWlsLmNvbSIsInVzZXJuYW1lIjoiRWR3YXJkIEVscmljIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTY1MTQ4MTM5OH0.Zhh-sP3FKjMKyec43uFliEI1qzm-b-uEj5zAR3uGIe4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n    \"personInCharge\": \"Agent Carlos H.\",\r\n    \"transDetails\":\r\n    {\r\n        \"paymentType\": \"Wire Transfer\",\r\n        \"bankDetails\": \"MBTC, Manila Branch, 0000-0000-0000\",\r\n        \"paymentInfo\": \"Installment, initial\",\r\n        \"payment\": 5000000\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/acquisitions/createAcq/626fceeda3301482cf17cb68",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"acquisitions",
+								"createAcq",
+								"626fceeda3301482cf17cb68"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Acquisition Details By ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNmY4OGYwNGQyOTA2MzA1ODcwYjRmYiIsImVtYWlsIjoiZWR3YXJkQGdtYWlsLmNvbSIsInVzZXJuYW1lIjoiRWR3YXJkIEVscmljIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTY1MTQ4MTM5OH0.Zhh-sP3FKjMKyec43uFliEI1qzm-b-uEj5zAR3uGIe4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"acqPropertyName\": \"SKY-Hotels, Manila Branch, Unit 12, 4th-flr\",\r\n    \"remarks\": \"Client Changed unit\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/acquisitions/updateAcq/626f9cbe04b24ac6e80f95ef",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"acquisitions",
+								"updateAcq",
+								"626f9cbe04b24ac6e80f95ef"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admin Actions",
+			"item": [
+				{
+					"name": "Register User to DB",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/users/register",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Property Details By ID",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/property/editPrp/626be0c97ee18b3e1b0bc39e",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"property",
+								"editPrp",
+								"626be0c97ee18b3e1b0bc39e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Create Property",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"propertyName\": \"SKY-Tower-2B\",\r\n   \"propertyLoc\": \"Ortigas NCR (near St Francis Square)\",\r\n   \"propertyType\": \"Business Tower\",\r\n   \"propertyDetails\": \r\n       {\r\n           \"lotArea\": \"1900qm\",\r\n            \"storey\": \"36-storey\",\r\n            \"price\": 350000\r\n       },\r\n    \"features\": {\r\n        \"bedroom\": \"\",\r\n        \"toiletbath\": \"\",\r\n        \"livingroom\": \"\",\r\n        \"dining\": \"\",\r\n        \"garage\": \"\"\r\n    },\r\n   \"remarks\": \"1 unit 2nd flr, East Wing, (near S-Jewelry and JPA Store) \",\r\n    \"available\": \"1\",\r\n    \"isActive\": true\r\n\r\n   \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/property/createPrp",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"property",
+								"createPrp"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modify Property Details",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n    \"propertyDetails\": {\r\n        \"lotArea\": \"Tower: 1900sqm, UnitforLease: 150sqm\",\r\n            \"storey\": \"Tower: 36-storey, UnitforLease: Single level\",\r\n            \"price\": 350000\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/property/editPrp/626fd156a3301482cf17cb6c",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"property",
+								"editPrp",
+								"626fd156a3301482cf17cb6c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Leasing Property",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"propertyName\": \"SKY-Tower-2A\",\r\n   \"propertyLoc\": \"Ortigas NCR (near St Francis Square)\",\r\n   \"propertyType\": \"Business Tower\",\r\n   \"propertyDetails\": \r\n       {\r\n           \"lotArea\": \"Tower: 1900sqm, UnitforLease: 150sqm\",\r\n            \"storey\": \"Tower: 36-storey, UnitforLease: Single level\",\r\n            \"price\": 350000\r\n       },\r\n   \"remarks\": \"1 unit Ground flr, West Wing, (near Shakeys and Ace Hardware) \",\r\n    \"available\": \"1\",\r\n    \"isActive\": true\r\n\r\n   \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/property/createLsPrp",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"property",
+								"createLsPrp"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Client Actions",
+			"item": [
+				{
+					"name": "User Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"edward@gmail.com\",\r\n    \"password\": \"user123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/users/login",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Acq Payment",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Create Prp",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"propertyName\": \"SKYTower\",\r\n   \"propertyLoc\": \"Manila,NCR\",\r\n   \"propertyType\": \"Condominium\",\r\n   \"propertyDetails\": [\r\n       {\r\n           \"lotArea\": \"50sqm\",\r\n            \"storey\": \"25-storey\",\r\n            \"price\": 50000\r\n       }\r\n   ],\r\n   \"features\": [\r\n       {\r\n           \"bedroom\": \"1 Bedroom, 1 master Bedroom\",\r\n           \"toiletbath\": \"1 Toilet and Bath\",\r\n           \"livingroom\": \"1 Living room\",\r\n           \"dining\": \"1 Dining\",\r\n           \"garage\": \"Tower ParkArea\"\r\n       }\r\n   ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/property/createPrp",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"property",
+						"createPrp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit Property Details",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"propertyName\": \"SKYTower-1A\",\r\n   \"isActive\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/property/editPrp/626be0c97ee18b3e1b0bc39e",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"property",
+						"editPrp",
+						"626be0c97ee18b3e1b0bc39e"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Lease Property",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"propertyName\": \"SKYTower\",\r\n   \"propertyLoc\": \"Manila,NCR\",\r\n   \"propertyType\": \"Tower\",\r\n   \"propertyDetails\": [\r\n       {\r\n           \"lotArea\": \"50sqm\",\r\n            \"storey\": \"Single floor\",\r\n            \"price\": 40000\r\n       }\r\n   ],\r\n   \"available\": \"3\",\r\n   \"isActive\": true\r\n   \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/property/createLsPrp",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"property",
+						"createLsPrp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register to DB",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"Edward\",\r\n    \"lastName\": \"Elric\",\r\n    \"email\": \"edward@gmail.com\",\r\n    \"password\": \"user123\",\r\n    \"contactNo\": \"09123456789\",\r\n    \"position\": \"Client\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/users/register",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"users",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update User to Client By ID",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/users/updToClient/626f88f04d2906305870b4fb",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"users",
+						"updToClient",
+						"626f88f04d2906305870b4fb"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
