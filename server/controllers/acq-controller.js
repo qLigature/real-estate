@@ -131,10 +131,87 @@ console.log(updates + "updates")
 	
 }
 
+const getAllAcq = (req, res) => {
+	Acq.find({})
+	.then(Acq => res.send(Acq))
+	.catch(error => res.send(error))
+	
+}
+
+const getAllCompleteAcq = (req, res) => {
+	Acq.find({ "transDetails.balance":  0 })
+	.then(Acq => res.send(Acq))
+	.catch(error => res.send(error))
+	
+}
+
+const getPendingAcq = (req, res) => {
+	Acq.find({ "transDetails.balance":  {$gt: 0} })
+	.then(Acq => res.send(Acq))
+	.catch(error => res.send(error))
+	
+}
+
+const getUserPendingAcq = (req, res) => {
+	Acq.find({ "clientId": req.user.id, "transDetails.balance":  {$gt: 0} })
+	.then(Acq => res.send(Acq))
+	.catch(error => res.send(error))
+	
+}
+
+const getUserCompletedAcq = (req, res) => {
+	Acq.find({ "clientId": req.user.id, "transDetails.balance":  0 })
+	.then(Acq => res.send(Acq))
+	.catch(error => res.send(error))
+	
+}
+
+const getClientPendingAcq = (req, res) => {
+	Acq.find({ "clientId": req.params.id, "transDetails.balance":  {$gt: 0} })
+	.then(Acq => res.send(Acq))
+	.catch(error => res.send(error))
+	
+}
+
+const getClientCompletedAcq = (req, res) => {
+	Acq.find({ "clientId": req.params.id, "transDetails.balance":  0 })
+	.then(Acq => res.send(Acq))
+	.catch(error => res.send(error))
+	
+}
+
+const searchAcqByParamsName = (req, res) => {
+	Acq.find({"acqPropertyName": {$regex: req.params.id, $options: '$i'}})
+	.then(result => {
+		if(result !== null){
+			return res.send(result)
+		} else {
+			return res.send(`Property Name ${req.params.id} doesn't exist. Please check your keyword.`)
+
+		}
+	})
+	/*
+	or use simple code:
+	.then(result => res.send(result))
+	*/
+	.catch(error => res.send(error))
+}
+
+const searchAcqByReqBody = (req, res) => {
 
 
 
-
+	Acq.find({"acqPropertyName": {$regex: req.body.acqPropertyName, $options: '$i'}})
+	.then(result => {
+		//result.length because the result returned by the find method is array type
+		if(result.length === 0){
+			return res.send(`No Property Name ${req.body.name} found. Please check your keyword`)
+		}else{
+			return res.send(result)
+		}
+	})
+	.catch(error => res.send(error))
+}
 
 
 
@@ -142,7 +219,16 @@ console.log(updates + "updates")
 module.exports = {
 	newAcq,
 	updateAcq,
-	updatePaymentAcq
+	updatePaymentAcq,
+	getAllAcq,
+	getAllCompleteAcq,
+	getPendingAcq,
+	getUserPendingAcq,
+	getUserCompletedAcq,
+	getClientPendingAcq,
+	getClientCompletedAcq,
+	searchAcqByParamsName,
+	searchAcqByReqBody
 };
 
 
