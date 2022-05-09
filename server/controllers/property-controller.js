@@ -129,3 +129,65 @@ module.exports.getAllPrp = (req, res) => {
 	.then(result => res.send(result))
 	.catch(error => res.send(error))
 }
+
+module.exports.getPropertyByNameParams = (req, res) => {
+
+	Property.find({"propertyName" : {$regex: req.params.id, $options: '$i'}})
+	.then(result => res.send(result))
+	.catch(error => res.send(error))
+}
+
+module.exports.getPropertyByNameReqBody = (req, res) => {
+
+	Property.find({"propertyName" : {$regex: req.body.propertyName, $options: '$i'} })
+	.then(result => res.send(result))
+	.catch(error => res.send(error))
+}
+
+module.exports.getPropertyById = (req,res) => {
+	Property.find({"_id" : req.params.id})
+	.then(result => res.send(result))
+	.catch(error => res.send(error))
+}
+
+module.exports.getPrpCategoryHotel = (req,res) => {
+	Property.find({"propertyType" : {$regex: "hotel", $options: '$i'}})
+	.then(result => res.send(result))
+	.catch(error => res.send(error))
+}
+
+module.exports.getPrpCategoryTownhouse = (req,res) => {
+	Property.find({"propertyType" : {$regex: "townhouse", $options: '$i'}})
+	.then(result => res.send(result))
+	.catch(error => res.send(error))
+}
+
+module.exports.getPrpCategoryCondominium = (req,res) => {
+	Property.find({"propertyType" : {$regex: "condominium", $options: '$i'}})
+	.then(result => res.send(result))
+	.catch(error => res.send(error))
+}
+
+module.exports.getPrpCategoryTower = (req,res) => {
+	Property.find({"propertyType" : {$regex: "tower", $options: '$i'}})
+	.then(result => res.send(result))
+	.catch(error => res.send(error))
+}
+
+module.exports.cityManila = (req,res) => {
+	Property.find({"propertyLoc" : {$regex: "manila", $options: '$i'}})
+	.then(result => res.send(result))
+	.catch(error => res.send(error))
+}
+
+module.exports.cityQC = (req,res) => {
+	Property.find({"propertyLoc" : {$regex: "quezon", $options: '$i'}})
+	.then(result => res.send(result))
+	.catch(error => res.send(error))
+}
+
+module.exports.propertyNearMe = (req,res) => {
+	Property.find({"propertyLoc" : {$regex: req.body.propertyLoc, $options: '$i'}})
+	.then(result => res.send(result))
+	.catch(error => res.send(error))
+}
